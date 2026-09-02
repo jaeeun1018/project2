@@ -146,7 +146,6 @@ with tab2:
 
     st.divider()
 
-
     st.subheader("📌 모델 주요 성능")
 
     col1, col2, col3, col4 = st.columns(4)
@@ -203,63 +202,6 @@ with tab2:
         "원본 이미지를 모델 학습 시 "
         "128 × 128 크기로 리사이즈하여 사용했습니다."
     )
-
-    st.divider()
-
- 
-    st.subheader("🧩 Confusion Matrix")
-
-    confusion_matrix = pd.DataFrame(
-        [
-            [13712, 2563],
-            [2438, 13681]
-        ],
-        columns=[
-            "예측 Fake",
-            "예측 Real"
-        ],
-        index=[
-            "실제 Fake",
-            "실제 Real"
-        ]
-    )
-
-    st.dataframe(
-        confusion_matrix,
-        use_container_width=True
-    )
-
-    st.info(
-        "Fake와 Real 모두 약 1만 3천 장 이상을 "
-        "정확하게 분류했으며, 특정 클래스에 "
-        "크게 편향되지 않은 결과를 확인했습니다."
-    )
-
-    st.divider()
-
-    st.subheader("🧠 CNN 모델 구성")
-
-    st.write("""
-    **Conv2D(32) → MaxPooling2D →  
-    Conv2D(64) → MaxPooling2D →  
-    Conv2D(128) → MaxPooling2D →  
-    GlobalAveragePooling2D → Dense(128) →  
-    Dropout(0.5) → Sigmoid**
-    """)
-
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.write("**Optimizer**")
-        st.write("Adam")
-
-    with col2:
-        st.write("**Loss Function**")
-        st.write("Binary Crossentropy")
-
-    with col3:
-        st.write("**Learning Rate**")
-        st.write("0.0001")
 
     st.divider()
 
